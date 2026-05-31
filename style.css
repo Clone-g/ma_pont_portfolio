@@ -772,24 +772,49 @@ footer {
 }
 
 @media (max-width: 768px) {
-  nav { padding: 0 24px; }
+  nav { padding: 0 20px; height: 70px; }
+  .nav-logo { font-size: 18px; }
   .nav-links { display: none; } 
+  .nav-cta { padding: 8px 16px; font-size: 13px; }
   
-  section { padding: 80px 24px; }
-  .hero-name { font-size: 48px; }
-  .section-title { font-size: 36px; }
+  section { padding: 60px 20px; }
+  .hero-name { font-size: 42px; }
+  .section-title { font-size: 32px; margin-bottom: 40px; }
   
-  .about-cards { grid-template-columns: 1fr; }
-  .skills-bar { flex-direction: column; align-items: flex-start; }
+  .hero-eyebrow { font-size: 11px; margin-bottom: 12px; }
+  .hero-title { font-size: 16px; margin-bottom: 32px; }
+  .hero-ctas { flex-direction: column; gap: 12px; }
+  .btn-primary, .btn-outline { width: 100%; text-align: center; }
+  
+  .about-cards { grid-template-columns: 1fr; gap: 20px; }
+  .about-card { padding: 32px 24px; }
+  
+  .skills-bar { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
   .skills-divider { display: none; }
   
-  .timeline { padding-left: 24px; }
-  .timeline-dot { left: -29px; }
+  .timeline { padding-left: 20px; }
+  .timeline-dot { left: -25px; }
+  .timeline-card { padding: 24px; }
   
-  footer { padding: 40px 24px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card { padding: 32px 24px; }
 
-  .blob-1 { width: 250px; height: 250px; top: -50px; left: -50px; }
-  .blob-2 { width: 200px; height: 200px; }
-  .blob-4 { width: 300px; height: 300px; top: -100px; right: -50px; }
-  .blob-5 { width: 250px; height: 250px; bottom: -50px; left: -50px; }
+  .edu-card { padding: 32px 24px; flex-direction: column; align-items: center; text-align: center; }
+  .edu-icon { margin-bottom: 16px; }
+
+  .contact-row { gap: 12px; }
+  .contact-text { font-size: 14px; word-break: break-all; }
+
+  footer { padding: 40px 20px; }
+
+  .blob-1 { width: 200px; height: 200px; top: -40px; left: -40px; }
+  .blob-2 { width: 150px; height: 150px; }
+  .blob-4 { width: 250px; height: 250px; top: -80px; right: -40px; }
+  .blob-5 { width: 200px; height: 200px; bottom: -40px; left: -40px; }
+}
+
+@media (max-width: 480px) {
+  .hero-name { font-size: 36px; }
+  .hero-stats { border-left: none; margin-left: 0; padding-left: 0; margin-top: 24px; }
+  .hero-socials { flex-wrap: wrap; }
 }
