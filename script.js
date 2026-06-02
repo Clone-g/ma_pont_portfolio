@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Handle Hamburger Menu
+    const hamburgerToggle = document.getElementById('hamburger-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (hamburgerToggle && navMenu) {
+        hamburgerToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a nav link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
     // Handle Hero CTA Buttons Scrolling
     const getInTouchBtn = document.getElementById('hero-get-in-touch');
     const viewExperienceBtn = document.getElementById('hero-view-experience');
