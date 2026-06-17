@@ -33,36 +33,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle Contact Form Submission
-    const contactForm = document.querySelector('.contact-form');
+    // Initialize EmailJS
+    emailjs.init('QEPIeIu7TYHZnK6fy');
+
+    // Handle Contact Form Submission via EmailJS
+    const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        const sendBtn = contactForm.querySelector('button');
-        
-        sendBtn.addEventListener('click', (e) => {
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // Basic validation
-            const inputs = contactForm.querySelectorAll('.form-input');
-            let isValid = true;
-            inputs.forEach(input => {
-                if (!input.value.trim()) isValid = false;
-            });
 
-            if (isValid) {
-                const originalText = sendBtn.innerText;
-                sendBtn.innerText = 'Sending...';
-                sendBtn.disabled = true;
+            const sendBtn = contactForm.querySelector('.btn-send');
+            const originalText = sendBtn.innerText;
+            sendBtn.innerText = 'Sending...';
+            sendBtn.disabled = true;
 
-                // Simulate network delay
-                setTimeout(() => {
-                    alert('Thank you for your message, Khin Su Su Hlaing will get back to you soon!');
-                    sendBtn.innerText = originalText;
-                    sendBtn.disabled = false;
-                    inputs.forEach(input => input.value = '');
-                }, 1500);
-            } else {
-                alert('Please fill out all fields before sending.');
-            }
+            emailjs.sendForm('service_q650vis', 'template_8ia8egc', contactForm)
+                .then(() => {
+                    sendBtn.innerText = '✓ Message Sent!';
+                    sendBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    contactForm.reset();
+
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        sendBtn.innerText = originalText;
+                        sendBtn.style.background = '';
+                        sendBtn.disabled = false;
+                    }, 3000);
+                })
+                .catch((error) => {
+                    console.error('EmailJS error:', error);
+                    sendBtn.innerText = '✗ Failed to Send';
+                    sendBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        sendBtn.innerText = originalText;
+                        sendBtn.style.background = '';
+                        sendBtn.disabled = false;
+                    }, 3000);
+                });
         });
     }
 });

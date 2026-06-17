@@ -389,13 +389,13 @@
           </div>
         </div>
 
-        <div class="contact-form">
-          <input class="form-input" type="text" placeholder="Your name">
-          <input class="form-input" type="email" placeholder="Your email">
-          <input class="form-input" type="text" placeholder="Subject">
-          <textarea class="form-input" placeholder="Your message..."></textarea>
+        <form class="contact-form" id="contact-form">
+          <input class="form-input" type="text" name="from_name" placeholder="Your name" required>
+          <input class="form-input" type="email" name="from_email" placeholder="Your email" required>
+          <input class="form-input" type="text" name="subject" placeholder="Subject" required>
+          <textarea class="form-input" name="message" placeholder="Your message..." required></textarea>
           <button type="submit" class="btn-primary btn-send">Send Message</button>
-        </div>
+        </form>
       </div>
     </section>
 
@@ -404,6 +404,7 @@
       <div>© 2026 · Business Development Professional · Bangkok, Thailand</div>
     </footer>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
 
