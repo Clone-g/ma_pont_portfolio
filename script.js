@@ -47,7 +47,18 @@ document.addEventListener('DOMContentLoaded', () => {
             sendBtn.innerText = 'Sending...';
             sendBtn.disabled = true;
 
-            emailjs.sendForm('service_q650vis', 'template_8ia8egc', contactForm)
+            const nameVal = contactForm.querySelector('[name="name"]').value;
+            const emailVal = contactForm.querySelector('[name="email"]').value;
+            const titleVal = contactForm.querySelector('[name="title"]').value;
+            const messageVal = contactForm.querySelector('[name="message"]').value;
+
+            emailjs.send('service_q650vis', 'template_8ia8egc', {
+                name: nameVal,
+                from_name: nameVal,
+                email: emailVal,
+                title: titleVal,
+                message: messageVal
+            })
                 .then(() => {
                     sendBtn.innerText = '✓ Message Sent!';
                     sendBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
